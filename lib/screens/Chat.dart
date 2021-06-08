@@ -23,39 +23,41 @@ class _ChatState extends State<Chat> {
         iconTheme: IconThemeData(color: Colors.grey),
         title: Text("Abebe Sisay"),
       ),
-      body: Container(
-          width: screen.width * .98,
-          height: screen.height * .98,
-          child: Stack(
-            children: [
-              Container(
-                height: screen.height * .75,
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      receivedMsg(),
-                      sentMsg(),
-                      receivedMsg(),
-                      sentMsg(),
-                      receivedMsg(),
-                      receivedMsg(),
-                    ],
+      body: SingleChildScrollView(
+        child: Container(
+            width: screen.width * .98,
+            height: screen.height * .98,
+            child: Column(
+              children: [
+                Container(
+                  height: screen.height * .77,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        receivedMsg(),
+                        sentMsg(),
+                        receivedMsg(),
+                        sentMsg(),
+                        receivedMsg(),
+                        receivedMsg(),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 10,
-                child: Container(
-                  color: Colors.white,
-                  width: screen.width,
-                  child: Row(
-                    children: [typeWidget(), sendBtn()],
+                Positioned(
+                  bottom: 10,
+                  child: Container(
+                    //color: Colors.white,
+                    width: screen.width,
+                    child: Row(
+                      children: [typeWidget(), sendBtn()],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          )),
+              ],
+            )),
+      ),
     );
   }
 
@@ -107,13 +109,13 @@ class _ChatState extends State<Chat> {
 
   Widget sendBtn() {
     return Container(
-        width: screen.width * 0.25,
+        width: screen.width * 0.2,
         child: TextButton(onPressed: () {}, child: Icon(Icons.send)));
   }
 
   Widget typeWidget() {
     return Container(
-      width: screen.width * 0.6,
+      width: screen.width * 0.7,
       height: 70,
       //   color: Colors.yellow,
       margin: const EdgeInsets.only(left: 10),

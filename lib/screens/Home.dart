@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tobiachat/screens/Settings.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 import 'Online.dart';
@@ -68,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()));
+                    MaterialPageRoute(builder: (context) => Settings()));
               }),
         ],
       ),

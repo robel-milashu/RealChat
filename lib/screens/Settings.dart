@@ -13,9 +13,14 @@ class _SettingsState extends State<Settings> {
       body: ListView(
         children: [
           UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                child: Text('A'),
+              ),
               accountName: Text('Nmae'),
               accountEmail: Text('saasd@dfndsf.cnwf')),
-          tile()
+          tile(),
+          tile(),
+          tile(),
         ],
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'Char.dart';
+import 'Chat.dart';
 
 class Online extends StatefulWidget {
   @override
