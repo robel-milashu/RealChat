@@ -1,4 +1,4 @@
-import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:tobiachat/screens/Home.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -6,7 +6,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final title = 'WebSocket Demo';
+    final title = 'Tobia Chat';
     return MaterialApp(
       title: title,
       home: MyHomePage(),
