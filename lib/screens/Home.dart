@@ -19,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _channel = WebSocketChannel.connect(
-      Uri.parse('ws://192.168.43.30:8100/TobiaChat/endpoint'),
+      Uri.parse('ws://192.168.1.12:8100/TobiaChat/endpoint'),
     );
   }
 
@@ -111,14 +111,19 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: [
                                   Container(
                                     width: screen.width * 0.6,
+                                    height: 80,
+                                    color: Colors.yellow,
                                     margin: const EdgeInsets.only(left: 10),
-                                    height: 50,
                                     child: TextField(
                                       controller: _controller,
+                                      autocorrect: true,
+                                      expands: true,
+                                      maxLines: null,
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
                                         hintText: "Type here..",
-                                        border: OutlineInputBorder(),
+                                        border:
+                                            OutlineInputBorder(gapPadding: 1),
                                         alignLabelWithHint: true,
                                       ),
                                     ),
