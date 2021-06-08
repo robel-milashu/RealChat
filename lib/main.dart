@@ -22,23 +22,33 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _controller = TextEditingController();
   final _channel = WebSocketChannel.connect(
-    Uri.parse('wss://echo.websocket.org'),
+    Uri.parse('wss://192.168.43.30:8100//TobiaChat//endpoint'),
+//    Uri.parse('wss://echo.websocket.org'),
   );
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[50],
+        foregroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.grey),
+        title: Text(
+          "Tobia Chat",
+          style: TextStyle(
+              fontSize: 22, fontWeight: FontWeight.bold, color: Colors.grey),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ListTile(
-              title: Text(
-                "Tobia Chat",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-            ),
+            ListTile(),
             Form(
               child: TextFormField(
                 controller: _controller,
@@ -51,11 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (context, snapshot) {
                 return Text(snapshot.hasData ? '${snapshot.data}' : '');
               },
-            )
+            ),
+            OutlinedButton(onPressed: _sendMessage, child: Text('Send'))
           ],
         ),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Column(
+          children: [],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _sendMessage,
         tooltip: 'Send message',
@@ -65,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _sendMessage() {
+    print(_channel.protocol);
     if (_controller.text.isNotEmpty) {
       _channel.sink.add(_controller.text);
     }
