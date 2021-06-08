@@ -39,6 +39,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontSize: 22, fontWeight: FontWeight.bold, color: Colors.grey),
           ),
         ),
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.home,
+                color: Colors.grey,
+              ),
+              onPressed: () {}),
+          IconButton(
+              icon: Icon(
+                Icons.notifications,
+                color: Colors.grey,
+              ),
+              onPressed: () {}),
+          IconButton(
+              icon: Icon(
+                Icons.message,
+                color: Colors.grey,
+              ),
+              onPressed: () {}),
+          IconButton(
+              icon: Icon(
+                Icons.settings,
+                color: Colors.grey,
+              ),
+              onPressed: () {}),
+        ],
       ),
 
       body: online
