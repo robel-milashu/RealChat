@@ -45,7 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.home,
                 color: Colors.grey,
               ),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
+              }),
           IconButton(
               icon: Icon(
                 Icons.notifications,
@@ -63,7 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.settings,
                 color: Colors.grey,
               ),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()));
+              }),
         ],
       ),
 

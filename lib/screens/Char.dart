@@ -9,6 +9,8 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
   Size screen;
+  final TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     screen = MediaQuery.of(context).size;
@@ -21,25 +23,39 @@ class _ChatState extends State<Chat> {
         iconTheme: IconThemeData(color: Colors.grey),
         title: Text("Abebe Sisay"),
       ),
-      body: SingleChildScrollView(
-        child: Container(
+      body: Container(
           width: screen.width * .98,
-          child: Positioned(
-            width: 48,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                receivedMsg(),
-                sentMsg(),
-                receivedMsg(),
-                sentMsg(),
-                receivedMsg(),
-                receivedMsg(),
-              ],
-            ),
-          ),
-        ),
-      ),
+          height: screen.height * .98,
+          child: Stack(
+            children: [
+              Container(
+                height: screen.height * .75,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      receivedMsg(),
+                      sentMsg(),
+                      receivedMsg(),
+                      sentMsg(),
+                      receivedMsg(),
+                      receivedMsg(),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 10,
+                child: Container(
+                  color: Colors.white,
+                  width: screen.width,
+                  child: Row(
+                    children: [typeWidget(), sendBtn()],
+                  ),
+                ),
+              ),
+            ],
+          )),
     );
   }
 
@@ -85,6 +101,33 @@ class _ChatState extends State<Chat> {
         'saklnfasf sd nsdbgwd gwsgtbwelrt ewqtj',
         style: TextStyle(
             color: Colors.black, fontSize: 16, fontFamily: 'Courier new'),
+      ),
+    );
+  }
+
+  Widget sendBtn() {
+    return Container(
+        width: screen.width * 0.25,
+        child: TextButton(onPressed: () {}, child: Icon(Icons.send)));
+  }
+
+  Widget typeWidget() {
+    return Container(
+      width: screen.width * 0.6,
+      height: 70,
+      //   color: Colors.yellow,
+      margin: const EdgeInsets.only(left: 10),
+      child: TextField(
+        controller: _controller,
+        autocorrect: true,
+        expands: true,
+        maxLines: null,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          hintText: "Type here..",
+          border: OutlineInputBorder(gapPadding: 1),
+          alignLabelWithHint: true,
+        ),
       ),
     );
   }
