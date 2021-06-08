@@ -21,13 +21,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _controller = TextEditingController();
-  final _channel = WebSocketChannel.connect(
-    Uri.parse('wss://192.168.43.30:8100//TobiaChat//endpoint'),
-//    Uri.parse('wss://echo.websocket.org'),
+  var _channel = WebSocketChannel.connect(
+    Uri.parse('ws://192.168.43.30:8100/TobiaChat/endpoint'),
   );
   @override
   void initState() {
     super.initState();
+    _channel = WebSocketChannel.connect(
+      Uri.parse('ws://192.168.43.30:8100/TobiaChat/endpoint'),
+    );
   }
 
   @override
@@ -72,15 +74,22 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _sendMessage,
-        tooltip: 'Send message',
-        child: Icon(Icons.send),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+          backgroundColor: Colors.grey[50],
+          onPressed: _sendMessage,
+          tooltip: 'Send message',
+          child: Center(
+            child: Text(
+              '.',
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold),
+            ),
+          )), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
   void _sendMessage() {
-    print(_channel.protocol);
     if (_controller.text.isNotEmpty) {
       _channel.sink.add(_controller.text);
     }
