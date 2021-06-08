@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'Char.dart';
+
 class Online extends StatefulWidget {
   @override
   _OnlineState createState() => _OnlineState();
@@ -18,7 +20,7 @@ class _OnlineState extends State<Online> {
         child: ListView(
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 15),
               child: Text(
                 'Contacts',
                 style: TextStyle(fontSize: 18, color: Colors.grey),
@@ -50,7 +52,10 @@ class _OnlineState extends State<Online> {
         ),
       ),
       child: ListTile(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Chat()));
+          },
           leading: Container(
             decoration: new BoxDecoration(
               borderRadius: new BorderRadius.all(new Radius.circular(50.0)),

@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Container(
                                     width: screen.width * 0.6,
                                     height: 80,
-                                    color: Colors.yellow,
+                                    //   color: Colors.yellow,
                                     margin: const EdgeInsets.only(left: 10),
                                     child: TextField(
                                       controller: _controller,
@@ -164,6 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _sendMessage() {
     if (_controller.text.isNotEmpty) {
       _channel.sink.add(_controller.text);
+      _controller.text = '';
     }
   }
 
