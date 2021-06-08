@@ -32,9 +32,7 @@ class _ChatState extends State<Chat> {
                 receivedMsg(),
                 sentMsg(),
                 receivedMsg(),
-                receivedMsg(),
                 sentMsg(),
-                receivedMsg(),
                 receivedMsg(),
                 receivedMsg(),
               ],
@@ -46,36 +44,48 @@ class _ChatState extends State<Chat> {
   }
 
   Widget receivedMsg() {
-    return Container(
-      decoration: new BoxDecoration(
-        color: Colors.green,
-        borderRadius: new BorderRadius.all(new Radius.circular(20.0)),
-        border: new Border.all(
-          color: Colors.blue,
-          width: .2,
+    return Positioned(
+      right: 50,
+      child: Container(
+        decoration: new BoxDecoration(
+          color: Colors.grey[600],
+          borderRadius: new BorderRadius.all(new Radius.circular(20.0)),
+          border: new Border.all(
+            color: Colors.blue,
+            width: .2,
+          ),
         ),
-      ),
-      //  color: Colors.green,
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      width: screen.width * .48,
-      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-      child: Text(
-        'This isf f  asfjsafasfbsa fsaofb safn aosfjbasjf    osdtg we jb',
-        style: TextStyle(color: Colors.white),
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+        width: screen.width * .58,
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        child: Text(
+          'This isf f  asfjsafasfbsa fsaofb safn aosfjbasjf    osdtg we jb',
+          style: TextStyle(
+              color: Colors.white, fontSize: 15, fontFamily: 'Courier new'),
+        ),
       ),
     );
   }
 
   Widget sentMsg() {
-    var x = screen.width * 0.5;
+    var x = screen.width * 0.4;
     return Container(
-      color: Colors.blue,
+      decoration: new BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: new BorderRadius.all(new Radius.circular(20.0)),
+        border: new Border.all(
+          color: Colors.grey[100],
+          width: .2,
+        ),
+      ),
       width: screen.width * .98,
       margin: const EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(vertical: 5, horizontal: x),
-      child: FittedBox(
-          fit: BoxFit.contain,
-          child: Text('saklnfasf sd nsdbgwd gwsgtbwelrt ewqtj')),
+      padding: EdgeInsets.only(left: x, right: 10, top: 5, bottom: 5),
+      child: Text(
+        'saklnfasf sd nsdbgwd gwsgtbwelrt ewqtj',
+        style: TextStyle(
+            color: Colors.black, fontSize: 16, fontFamily: 'Courier new'),
+      ),
     );
   }
 }

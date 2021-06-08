@@ -108,32 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             Positioned(
                               bottom: 10,
                               child: Row(
-                                children: [
-                                  Container(
-                                    width: screen.width * 0.6,
-                                    height: 80,
-                                    //   color: Colors.yellow,
-                                    margin: const EdgeInsets.only(left: 10),
-                                    child: TextField(
-                                      controller: _controller,
-                                      autocorrect: true,
-                                      expands: true,
-                                      maxLines: null,
-                                      keyboardType: TextInputType.text,
-                                      decoration: InputDecoration(
-                                        hintText: "Type here..",
-                                        border:
-                                            OutlineInputBorder(gapPadding: 1),
-                                        alignLabelWithHint: true,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                      width: screen.width * 0.25,
-                                      child: TextButton(
-                                          onPressed: _sendMessage,
-                                          child: Icon(Icons.send)))
-                                ],
+                                children: [typeWidget(), sendBtn()],
                               ),
                             ),
                           ],
@@ -158,6 +133,33 @@ class _MyHomePageState extends State<MyHomePage> {
             Icons.online_prediction,
             color: Colors.grey,
           )), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget sendBtn() {
+    return Container(
+        width: screen.width * 0.25,
+        child: TextButton(onPressed: _sendMessage, child: Icon(Icons.send)));
+  }
+
+  Widget typeWidget() {
+    return Container(
+      width: screen.width * 0.6,
+      height: 80,
+      //   color: Colors.yellow,
+      margin: const EdgeInsets.only(left: 10),
+      child: TextField(
+        controller: _controller,
+        autocorrect: true,
+        expands: true,
+        maxLines: null,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+          hintText: "Type here..",
+          border: OutlineInputBorder(gapPadding: 1),
+          alignLabelWithHint: true,
+        ),
+      ),
     );
   }
 
