@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text(
             "Tobia Chat",
             style: TextStyle(
-                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.grey),
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.grey),
           ),
         ),
         actions: [
@@ -50,12 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => MyHomePage()));
               }),
-          IconButton(
-              icon: Icon(
-                Icons.notifications,
-                color: Colors.grey,
-              ),
-              onPressed: () {}),
+          // IconButton(
+          //     icon: Icon(
+          //       Icons.notifications,
+          //       color: Colors.grey,
+          //     ),
+          //     onPressed: () {}),
           IconButton(
               icon: Icon(
                 Icons.message,
@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Stack(
                           children: [
                             Container(
-                              height: screen.height * .75,
+                              height: screen.height * .78,
                               width: screen.width * .95,
                               child: SingleChildScrollView(
                                 child: StreamBuilder(
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     } else {
                                       switch (snapshot.connectionState) {
                                         case ConnectionState.active:
-                                          return Text(snapshot.hasData
+                                          return sentMsg(snapshot.hasData
                                               ? '${snapshot.data}'
                                               : '');
                                         case ConnectionState.waiting:
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             Positioned(
-                              bottom: 10,
+                              bottom: 0,
                               child: Row(
                                 children: [typeWidget(), sendBtn()],
                               ),
@@ -181,5 +181,51 @@ class _MyHomePageState extends State<MyHomePage> {
   void dispose() {
     _channel.sink.close();
     super.dispose();
+  }
+
+  Widget sentMsg(msg) {
+    return Positioned(
+      right: 50,
+      child: Container(
+        decoration: new BoxDecoration(
+          color: Colors.grey[600],
+          borderRadius: new BorderRadius.all(new Radius.circular(20.0)),
+          border: new Border.all(
+            color: Colors.blue,
+            width: .2,
+          ),
+        ),
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+        width: screen.width * .58,
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        child: Text(
+          msg,
+          style: TextStyle(
+              color: Colors.white, fontSize: 15, fontFamily: 'Courier new'),
+        ),
+      ),
+    );
+  }
+
+  Widget receivedMsg(msg) {
+    var x = screen.width * 0.4;
+    return Container(
+      decoration: new BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: new BorderRadius.all(new Radius.circular(20.0)),
+        border: new Border.all(
+          color: Colors.grey[100],
+          width: .2,
+        ),
+      ),
+      width: screen.width * .98,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.only(left: x, right: 10, top: 5, bottom: 5),
+      child: Text(
+        msg,
+        style: TextStyle(
+            color: Colors.black, fontSize: 16, fontFamily: 'Courier new'),
+      ),
+    );
   }
 }
